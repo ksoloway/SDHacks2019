@@ -18,10 +18,7 @@ $(document).ready(function() {
 	});
 	
 	$("#get-friends-button").click(function() {
-		var personID = $("#get-friends").val();
-		$.get("/people/" + personID, function(data) {
-			$("#get-friends-container").html(JSON.stringify(data, null, 2));
-		});
+		location.href = "/test"
 	});
 	
 	$("#add-friend-button").click(function() {

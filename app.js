@@ -47,7 +47,11 @@ app.listen(port, function () {
 
 // Serves the index.html file (our basic frontend)
 app.get('/', function (req, res) {
-	res.sendFile('index.html', { root: __dirname });
+	res.sendFile('/views/index.html', { root: __dirname });
+});
+
+app.get('/test', function (req, res) {
+	res.sendFile('/views/test.html', { root: __dirname });
 });
 
 // GET route that displays all people (finds all Person objects)
