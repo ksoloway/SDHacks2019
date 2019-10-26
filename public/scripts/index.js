@@ -1,9 +1,9 @@
 $(document).ready(function() {
-	
+
 	$.get("/people", function(data) {
 		$("#get-all-container").html(JSON.stringify(data, null, 2));
 	});
-	
+
 	$("#add-person-button").click(function() {
 		$.ajax({
 			type: "POST",
@@ -16,11 +16,15 @@ $(document).ready(function() {
 			}
 		});
 	});
-	
+
 	$("#get-friends-button").click(function() {
-		location.href = "/test"
+		location.href = "/test";
 	});
-	
+
+	$("#add-animal-button").click(function() {
+		location.href = "/testsean";
+	});
+
 	$("#add-friend-button").click(function() {
 		var personID = $("#add-friend-self").val();
 		var friendID = $("#add-friend-friend").val();
@@ -35,7 +39,7 @@ $(document).ready(function() {
 			}
 		});
 	});
-	
+
 	$("#remove-person-button").click(function() {
 		var personID = $("#remove-person").val();
 		$.ajax({
@@ -48,5 +52,5 @@ $(document).ready(function() {
 			}
 		});
 	});
-	
+
 });
