@@ -18,7 +18,7 @@ $(document).ready(function() {
 	});
 	
 	$("#get-friends-button").click(function() {
-		location.href = "/test"
+		location.href = "/test";
 	});
 	
 	$("#add-friend-button").click(function() {
