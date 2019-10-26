@@ -89,7 +89,18 @@ app.get('/people', function (req, res, next) {
 		}
 	});
 });
-
+app.get('/amzapi/:text', function(req,res,next){
+	textParam = req.params.text;
+	languageParam = "en";
+	params = {Text: textParam, LanguageCode:languageParam};
+	comprehend.detectSentiment(params, function(err, data) {
+		if (err) {
+			console.log(err)
+		} else {
+			res.send(data); // Sends the result as JSON
+		}           // successful response
+	  });
+});
 // GET route that displays one person's friends
 app.get('/people/:id', function (req, res, next) {
 	Person.findById(req.params.id, function (err, result) { // Finds person with id (param)
