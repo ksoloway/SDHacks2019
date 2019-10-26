@@ -54,6 +54,9 @@ app.get('/test', function (req, res) {
 	res.sendFile('/views/test.html', { root: __dirname });
 });
 
+app.get('/testsean', function (req, res) {
+	res.sendFile('/views/testsean.html', { root: __dirname });
+});
 // GET route that displays all people (finds all Person objects)
 app.get('/people', function (req, res, next) {
 	Person.find({}, function (err, result) {
@@ -65,7 +68,7 @@ app.get('/people', function (req, res, next) {
 	});
 });
 
-// GET route that displays one person's friends 
+// GET route that displays one person's friends
 app.get('/people/:id', function (req, res, next) {
 	Person.findById(req.params.id, function (err, result) { // Finds person with id (param)
 		if (!err) {
@@ -104,7 +107,7 @@ app.put('/people/:id', function (req, res, next) {
 			if (err) {
 				console.log(err);
 			} else {
-				Person.findById(req.body.id, function (err, person) { // Same, but for the 2nd person 
+				Person.findById(req.body.id, function (err, person) { // Same, but for the 2nd person
 					person.friends.push(req.params.id); // Saves the Person object
 					person.save(function (err) {
 						if (err) {
