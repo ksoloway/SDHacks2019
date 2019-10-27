@@ -12,6 +12,7 @@ var AWS = require('aws-sdk');
 const app = express();
 var bcrypt = require('bcrypt');
 var loginUsername = "";
+var textTest = "test";
 mongoose.connect(process.env.URI, {dbName: 'SDHacks2019Db'});
 
 var credentials = new AWS.EnvironmentCredentials('AWS');
@@ -25,7 +26,7 @@ AWS.config.getCredentials(function(err) {
   var comprehend = new AWS.Comprehend();
 
 textract.fromFileWithPath("ad.jpg",function(err,text){
-	console.log(text);
+	textTest = text;
 });
 // Set up static files
 app.use(express.static('public'));
@@ -106,6 +107,13 @@ app.get('/amzapi/:text/:language', function(req,res,next){
 			res.send(data); // Sends the result as JSON
 		}           // successful response
 	  });
+});
+
+app.get('/testText', function(req,res,next){
+
+			console.log(textTest);
+			res.send(textTest); // Sends the result as JSON
+		           // successful response
 });
 
 app.post('/hist/:newhistory/:sent',function(req, res, next){

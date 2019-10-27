@@ -1,7 +1,9 @@
 
 $(document).ready(function() {
-
-   
+  
+  $.get("/testText", function(data) {      
+      $("#analysis-text").val(data);
+    });
   
     $("#signup").click(function() {
       location.href = "/signup";
