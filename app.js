@@ -24,7 +24,7 @@ AWS.config.getCredentials(function(err) {
 
 // Set up static files
 app.use(express.static('public'));
-app.use('/css', express.static(path.join(__dirname, 'public/styles')));
+app.use('/styles', express.static(path.join(__dirname, 'public/styles')));
 app.use('/scripts', express.static(path.join(__dirname, 'public/scripts')));
 app.use('/views', express.static(path.join(__dirname, 'public/views')));
 
