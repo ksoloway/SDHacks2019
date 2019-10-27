@@ -12,8 +12,6 @@ const app = express();
 mongoose.connect(process.env.URI, {dbName: 'SDHacks2019Db'});
 
 var credentials = new AWS.EnvironmentCredentials('AWS');
-console.log(credentials);
-//var credentials = new AWS.SharedIniFileCredentials({profile: 'default'});
 AWS.config.credentials = credentials;
 
 AWS.config.getCredentials(function(err) {
@@ -23,31 +21,12 @@ AWS.config.getCredentials(function(err) {
   AWS.config.update({region: 'us-east-1'});
   var comprehend = new AWS.Comprehend();
 
-
-// const MongodbMemoryServer = require('mongodb-memory-server');
-
-// const mongoServer = new MongodbMemoryServer.MongoMemoryServer({
-// 	binary: { version: "latest" },
-// 	instance: { port: 65210, dbName: "test" }
-// });
-
-
-//const MongoClient = require('mongodb').MongoClient;
-//console.log(process.env.URI);
-
-//const client = new MongoClient(uri, { useNewUrlParser: true });
-
-// client.connect(err => {
-//   const collection = client.db("test").collection("devices");
-//   // perform actions on the collection object
-//   client.close();
-// });
-
-
 // Set up static files
 app.use(express.static('public'));
 app.use('/css', express.static(path.join(__dirname, 'public/styles')));
 app.use('/scripts', express.static(path.join(__dirname, 'public/scripts')));
+app.use('/views', express.static(path.join(__dirname, 'public/views')));
+
 
 // Use body-parser to parse HTTP request parameters
 app.use(bodyParser.json());
@@ -71,6 +50,10 @@ app.get('/', function (req, res) {
 	res.sendFile('/views/index.html', { root: __dirname });
 });
 
+app.get('/indextest', function (req, res) {
+	res.sendFile('/views/indextest.html', { root: __dirname });
+});
+
 app.get('/test', function (req, res) {
 	res.sendFile('/views/test.html', { root: __dirname });
 });
@@ -89,9 +72,31 @@ app.get('/people', function (req, res, next) {
 	});
 });
 
-app.get('/amzapi/:text', function(req,res,next){
+function languageCode(language) {
+	if (language == "English"){
+		return "en";
+	}
+	if (language == "German"){
+		return "de";
+	}
+	if (language == "Spanish"){
+		return "es";
+	}
+	if (language == "French"){
+		return "fr";
+	}
+	if (language == "Italian"){
+		return "it";
+	}
+	if (language == "Portuguese"){
+		return "pt";
+	}
+}
+  
+
+app.get('/amzapi/:text/:language', function(req,res,next){
 	textParam = req.params.text;
-	languageParam = "en";
+	languageParam = languageCode(req.params.language);
 	params = {Text: textParam, LanguageCode:languageParam};
 	comprehend.detectSentiment(params, function(err, data) {
 		if (err) {

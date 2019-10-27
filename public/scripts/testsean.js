@@ -3,12 +3,11 @@ $(document).ready(function() {
         var text = $("#test-api").val();
 		$.ajax({
 			type: "GET",
-			url: "/amzapi/"+text,
+			url: "/amzapi/"+text+"/"+"English",
 			data: {},
 			success: function(data) {
 				console.log(data);
 			}
 		});
 	});
-
 });
