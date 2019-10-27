@@ -59,8 +59,8 @@ app.get('/test', function (req, res) {
 	res.sendFile('/views/logintest.html', { root: __dirname });
 });
 
-app.get('/login', function (req, res) {
-	res.sendFile('/views/login.html', { root: __dirname });
+app.get('/loggedin', function (req, res) {
+	res.sendFile('/views/loggedin.html', { root: __dirname });
 });
 
 app.get('/testsean', function (req, res) {

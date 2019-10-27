@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
   $("#login").click(function() {
-		location.href = "/";
+		location.href = "/loggedin";
   }
 		});

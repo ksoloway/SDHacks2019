@@ -19,4 +19,8 @@ $(document).ready(function() {
   $("#logout").click(function() {
     location.href = "/";
   });
+
+  $("#about").click(function() {
+    location.href = "/about";
+  });
 });

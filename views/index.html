@@ -8,7 +8,7 @@
 
   <div class="header">
     <div class="Header-Buttons">
-      <a href="/"><img src="EmoText1.png" class="logo" alt="Logo"></a>
+      <a href="#"><img src="EmoText1.png" class="logo" alt="Logo"></a>
       <div class="Nav-Buttons" style=float:right>
         <a href="#"><button class="Button-Dropdown">
           <select>
@@ -21,14 +21,27 @@
           </select>
           </button>
         </a>
-        <div class="dropdown">
-          <button onclick="myFunction()" class="dropbtn">John Doe</button>
-            <div id="myDropdown" class="dropdown-content">
-              <a href="/about" id="about">About</a>
-              <a href="/login" id="logout">Logout</a>
+        <button id="myBtn">Log In</button>
+
+<!-- The Modal -->
+          <div id="myModal" class="modal">
+
+  <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div>
+                <h2 id="center-text">Hello!</h2>
+                <p id="center-text">Sign into your account</p></div>
+                <hr id="signin">
+                <p>Email or username</p>
+                <input type="text" name="username" value="username">
+                <p>Password</p>
+                <input type="text" name="password" value="password"> <br>
+                <a href="/loggedin" id="login"><button id="login-button" type="button" name="login">Login</button></a>
+                <p id="center-text">Not registered? <a href="/signup" >Sign up!</a></p>
             </div>
-        </div>
-      <!--  <a href="#"><button class="Button-Design"><p>John Doe</p></button></a> -->
+
+          </div>
       </div>
     </div>
   </div>
@@ -41,27 +54,10 @@
         <a href="#"><button class="Calculate-Button"><p>Calculate</p></button></a>
         <a href="#"><button class="Clear-Button"><p>Clear</p></button></a>
     </div>
-      	<textarea class="Form" name="Analysis-Input" cols="100" rows="14"></textarea>
+      	<textarea class="Form" name="Analysis-Input" cols="160" rows="14"></textarea>
      </div>
   </div>
 
-    <div>
-      <table border="0" class="History-Box">
-        <tr>
-          <th>History</th>
-        </tr>
-        <tr>
-          <td><button  name="button">The fitnessgram pacer test is a multilevel...</button></td>
-        </tr>
-        <tr>
-          <td><button  name="button">The fitnessgram pacer test is a multilevel...</button></td>
-        </tr>
-        <tr>
-          <td><button  name="button">The fitnessgram pacer test is a multilevel...</button></td>
-        </tr>
-      </table>
-
-    </div>
     <div>
       <table class="Result-Box" border="0">
         <thead>
@@ -77,10 +73,37 @@
             <td>Negative: 0%</td>
           </tr>
           <tr>
-            <td>Neutural: 2%</td>
+            <td>Neutral: 2%</td>
             <td>&nbsp;</td>
             <td>Mixed: 0%</td>
           </tr>
       </table>
     </div>
+    <script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+
+  // Get the button that opens the modal
+  var btn = document.getElementById("myBtn");
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+
+  // When the user clicks the button, open the modal
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+  </script>
   </body>
