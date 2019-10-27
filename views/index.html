@@ -1,0 +1,87 @@
+<!doctype>
+<head>
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="scripts/index.js"></script>
+  <link rel="stylesheet" href="../scripts/styles/index.css">
+</head>
+<body>
+
+  <div class="header">
+    <div class="Header-Buttons">
+      <a href="#"><img src="EmoText1.png" class="logo" alt="Logo"></a>
+      <div class="Nav-Buttons" style=float:"right">
+        <a href="#"><button class="Button-Design">
+          <select>
+            <option value="English">English</option>
+            <option value="German">German</option>
+            <option value="French">French</option>
+            <option value="Spanish">Spanish</option>
+            <option value="Italian">Italian</option>
+            <option value="Portuguese">Portuguese</option>
+          </select>
+          </button>
+        </a>
+        <div class="dropdown">
+          <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+            <div id="myDropdown" class="dropdown-content">
+              <a href="#">Link 1</a>
+              <a href="#">Link 2</a>
+              <a href="#">Link 3</a>
+            </div>
+        </div>
+      <!--  <a href="#"><button class="Button-Design"><p>John Doe</p></button></a> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="Body-Text">
+    <div class="Text-Box">
+    <div class="Body-Buttons">
+      <a href="#"><button class="Button-Design"><p>Documents</p></button></a>
+      <a href="#"><button class="Button-Design"><p>Text</p></button></a>
+        <a href="#"><button class="Calculate-Button"><p>Calculate</p></button></a>
+        <a href="#"><button class="Clear-Button"><p>Clear</p></button></a>
+    </div>
+      	<textarea class="Form" name="Analysis-Input" cols="100" rows="14"></textarea>
+     </div>
+  </div>
+
+    <div>
+      <table border="0" class="History-Box">
+        <tr>
+          <th>History</th>
+        </tr>
+        <tr>
+          <td><button  name="button">The fitnessgram pacer test is a multilevel...</button></td>
+        </tr>
+        <tr>
+          <td><button  name="button">The fitnessgram pacer test is a multilevel...</button></td>
+        </tr>
+        <tr>
+          <td><button  name="button">The fitnessgram pacer test is a multilevel...</button></td>
+        </tr>
+      </table>
+
+    </div>
+    <div>
+      <table class="Result-Box" border="0">
+        <thead>
+          <tr>
+            <th>&nbsp;<hr></th>
+            <th>Results</th>
+            <th>&nbsp;</th>
+          </tr>
+        </thead>
+          <tr>
+            <td>Positive: 98%</td>
+            <td>&nbsp;</td>
+            <td>Negative: 0%</td>
+          </tr>
+          <tr>
+            <td>Neutural: 2%</td>
+            <td>&nbsp;</td>
+            <td>Mixed: 0%</td>
+          </tr>
+      </table>
+    </div>
+  </body>

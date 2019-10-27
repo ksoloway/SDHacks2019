@@ -47,7 +47,7 @@ app.listen(port, function () {
 
 // Serves the index.html file (our basic frontend)
 app.get('/', function (req, res) {
-	res.sendFile('/views/indextest.html', { root: __dirname });
+	res.sendFile('/views/index.html', { root: __dirname });
 });
 
 app.get('/indextest', function (req, res) {
@@ -92,7 +92,7 @@ function languageCode(language) {
 		return "pt";
 	}
 }
-  
+
 
 app.get('/amzapi/:text/:language', function(req,res,next){
 	textParam = req.params.text;

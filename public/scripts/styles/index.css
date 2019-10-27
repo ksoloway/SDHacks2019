@@ -1,0 +1,118 @@
+body {
+  background: #6DAEDB;
+  margin: 0;
+  font: "Times New Roman";
+  margin-bottom: 2%;
+}
+
+p {
+  font-size: 16px;
+
+}
+
+.logo {
+  width: 10%;
+}
+
+.Nav-Buttons {
+  float:right;
+}
+
+
+.header {
+  background-color: #173753;
+  padding: 1.5%;
+  font-size: 25px;
+
+}
+
+.History-Box {
+  border-style: solid;
+  border-radius: 4%;
+  border-color: #2892d7;
+  border-width: thick;
+  float: right;
+  background-color: #ffffff;
+  padding: 1.8%;
+  margin-right: 10%;
+  margin-top: 4.8%;
+}
+.Text-Box {
+  float: left;
+  padding-bottom: 5%;
+  border-width: thick;
+}
+
+.Body-Text {
+  margin-left: 5%;
+
+  margin-top: 5%;
+}
+
+.Form {
+  border-style: solid;
+  border-radius: 4%;
+  border-color: #2892d7;
+  border-width: thick;
+}
+
+th {
+  padding: 3%;
+}
+
+td {
+  padding: 2%;
+  padding-bottom: 2%;
+}
+
+hr {
+  width: 280%;
+  margin-bottom: 1%;
+}
+.Result-Box {
+  border-style: solid;
+  border-radius: 4%;
+  border-color: #2892d7;
+  border-width: thick;
+  background-color: #ffffff;
+  width: 80%;
+  margin-left: 10%;
+}
+
+.Clear-Button {
+  float: right;
+  background-color: #1D7082;
+  border-color: #1D7082;
+  color: #ffffff;
+  margin-right: 1%;
+  border-radius: 4%;
+}
+
+.Calculate-Button {
+  float: right;
+  background-color: #1D7082;
+  border-color: #1D7082;
+  color: #ffffff;
+  border-radius: 4%;
+}
+
+.Button-Design {
+  background-color: #1D7082;
+  border-color: #1D7082;
+  color: #ffffff;
+  border-radius: 4%;
+  margin-bottom: 1%;
+}
+
+
+button {
+  border-radius: 8%;
+}
+
+select {
+  background-color: #1D7082;
+  border: #1D7082;
+  color: #ffffff;
+  padding-top: 20%;
+  padding-bottom: 20%;
+}
