@@ -1,3 +1,13 @@
+$(document).ready(function() {
+
+  $.get('/getUser',function(data){
+    var string = JSON.stringify(data);
+    var obj = JSON.parse(string);
+    console.log(obj);
+    $('#updateUser').html(obj);
+  })
+});
+
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
   }
@@ -39,9 +49,4 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-$(document).ready(function() {
 
-  $("#logout").click(function() {
-    location.href = "/";
-  });
-});

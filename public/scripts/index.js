@@ -33,9 +33,12 @@ function myFunction() {
   }
 $(document).ready(function() {
 
-  $("#logout").click(function() {
-    location.href = "/";
-  });
+  $.get('/getUser',function(data){
+    var string = JSON.stringify(data);
+    var obj = JSON.parse(string);
+    console.log(obj);
+    $('#updateUser').html(obj);
+  })
 
   $("#about").click(function() {
     location.href = "/about";

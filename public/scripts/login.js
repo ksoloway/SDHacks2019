@@ -46,10 +46,10 @@ $(document).ready(function() {
                     console.log(username);
                 } else{
                     console.log(username);
+                    currName = username;
                     location.href = "/loggedin";
                 }
       }
     });
-    });
-  
+    });  
 });
