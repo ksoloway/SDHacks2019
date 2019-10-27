@@ -4,8 +4,10 @@ const mongoose = require('mongoose');
 const config = require('dotenv').config();
 var path = require("path");
 var request = require('request');
-const Login = require('./models/login')
-var AWS = require('aws-sdk')
+const Login = require('./models/login');
+var tesseract = require('node-tesseract');
+var textract = require('textract');
+var AWS = require('aws-sdk');
 // Set up the Express app
 const app = express();
 var bcrypt = require('bcrypt');
@@ -22,6 +24,9 @@ AWS.config.getCredentials(function(err) {
   AWS.config.update({region: 'us-east-1'});
   var comprehend = new AWS.Comprehend();
 
+textract.fromFileWithPath("ad.jpg",function(err,text){
+	console.log(text);
+});
 // Set up static files
 app.use(express.static('public'));
 app.use('/styles', express.static(path.join(__dirname, 'public/styles')));
