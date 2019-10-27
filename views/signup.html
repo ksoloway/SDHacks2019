@@ -1,7 +1,8 @@
 <!doctype>
 <head>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script src="scripts/signup.js"></script>
+  <script src="scripts/signup.js"></script>
+  <script src="scripts/login.js"></script>
   <link rel="stylesheet" href="../styles/signup.css">
 </head>
 <body>
@@ -34,10 +35,10 @@
                 <p id="center-text">Sign into your account</p></div>
                 <hr id="signin">
                 <p>Email or username</p>
-                <input type="text" name="username" value="username">
+                <input id="login-username" type="text" name="username" placeholder="username">
                 <p>Password</p>
-                <input type="text" name="password" value="password"> <br>
-                <a href="/loggedin" id="login"><button id="login-button" type="button" name="login">Login</button></a>
+                <input id="login-password" type="password" name="password" placeholder="password"> <br>
+                <a><button id="login-button" type="button" name="login">Login</button></a>
             </div>
 
           </div>
@@ -46,10 +47,10 @@
   </div>
     <div class="container">
       <h2>Username</h2>
-      <input id="signup-input" type="text" name="First Name" value="First Name">
+      <input id="signup-username" type="text" name="signup-username" placeholder="First Name">
       <h2>Password</h2>
-      <input id="signup-input" type="text" name="Password" value="Password"><br>
-      <a href="/loggedin"><button id="signup-button" type="button" name="Sign Up">Sign Up</button></a>
+      <input id="signup-password" type="password" name="signup-password" placeholder="Password"><br>
+      <a ></a><button id="signup-button">Sign Up</button></a>
       </div>
 
   <script>

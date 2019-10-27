@@ -59,10 +59,6 @@ app.get('/indextest', function (req, res) {
 	res.sendFile('/views/indextest.html', { root: __dirname });
 });
 
-app.get('/test', function (req, res) {
-	res.sendFile('/views/login.html', { root: __dirname });
-});
-
 app.get('/about', function (req, res) {
 	res.sendFile('/views/about.html', { root: __dirname });
 });
@@ -239,6 +235,10 @@ app.put('/logout',function(req, res, next){
 		loginUsername = "";
 		res.send("");
 	}
+});
+
+app.get('/getUser',function(req, res, next){
+	res.send(loginUsername);
 });
 
 // PUT route that adds a friend to a person

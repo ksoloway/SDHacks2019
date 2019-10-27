@@ -1,7 +1,8 @@
 <!doctype>
 <head>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script src="scripts/frontpage.js"></script>
+  <script src="scripts/frontpage.js"></script>
+  <script src="scripts/login.js"></script>
   <link rel="stylesheet" href="../styles/frontpage.css">
 </head>
 <body>
@@ -34,10 +35,12 @@
                 <p id="center-text">Sign into your account</p></div>
                 <hr id="signin">
                 <p>Email or username</p>
-                <input type="text" name="username" value="username">
+                <input id="login-username" type="text" name="username" placeholder="username">
                 <p>Password</p>
-                <input type="text" name="password" value="password"> <br>
-                <a href="/loggedin" id="login"><button id="login-button" type="button" name="login">Login</button></a>
+                <input id="login-password" type="password" name="password" placeholder="password"> <br>
+                <!-- <a href="/loggedin" id="login"> -->
+                  <a><button id="login-button" type="button" name="login">Login</button></a>
+                <!-- </a> -->
                 <p id="center-text">Not registered? <a href="/signup" >Sign up!</a></p>
             </div>
 

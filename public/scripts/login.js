@@ -23,4 +23,33 @@ $(document).ready(function() {
   $("#about").click(function() {
     location.href = "/about";
   });
+
+  $("#login-button").click(function() {
+    if($("#login-username").val()!=''){
+        var usr = $("#login-username").val();
+    } else{
+        return;
+    }
+    if($("#login-password").val()!=''){
+            var pwd = $("#login-password").val();
+        } else{
+            return;
+        }
+    $.ajax({
+      type: "GET",
+      url: "/login/"+usr+"/"+pwd,
+      data: {},
+      success: function(username) {
+                if(username=="doesn't exist"){
+                    console.log(username);
+                } else if(username=="wrong password"){
+                    console.log(username);
+                } else{
+                    console.log(username);
+                    currName = username;
+                    location.href = "/loggedin";
+                }
+      }
+    });
+    });  
 });
