@@ -23,11 +23,15 @@ $(document).ready(function() {
       if (data[i][0].length > 50){
         data[i][0] = data[i][0].substring(0,50) + "...";
       }
-    }
-  
+    }  
     $("#row-one").html("<div  name='button'>"+data[0][0]+" , "+data[0][1]+"</div>");
     $("#row-two").html("<div  name='button'>"+data[1][0]+" , "+data[1][1]+"</div>");
     $("#row-three").html("<div  name='button'>"+data[2][0]+" , "+data[2][1]+"</div>");
+  });
+
+  $("#document-button").click(function() {
+    $("#url-input").toggle();
+    $("#parse-button").toggle();
   });
 
   $.get('/getUser',function(data){
