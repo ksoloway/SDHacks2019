@@ -56,12 +56,25 @@ app.get('/indextest', function (req, res) {
 });
 
 app.get('/test', function (req, res) {
+	res.sendFile('/views/logintest.html', { root: __dirname });
+});
+
+app.get('/login', function (req, res) {
 	res.sendFile('/views/login.html', { root: __dirname });
 });
 
 app.get('/testsean', function (req, res) {
 	res.sendFile('/views/testsean.html', { root: __dirname });
 });
+
+app.get('/signup', function (req, res) {
+	res.sendFile('/views/signup.html', { root: __dirname });
+});
+
+app.get('/about', function (req, res) {
+	res.sendFile('/views/about.html', { root: __dirname });
+});
+
 // GET route that displays all people (finds all Person objects)
 app.get('/people', function (req, res, next) {
 	Person.find({}, function (err, result) {
@@ -136,7 +149,7 @@ app.post('/signup/:usr/:pwd', function(req,res,next){
 app.get('/login/:usr/:pwd', function(req,res,next){
 	userparam = req.params.usr;
 	passwordparam = req.params.pwd;
-	Login.find({username:userparam,password:passwordparam}, 
+	Login.find({username:userparam,password:passwordparam},
 		function (err, docs) { // Saves the Person object to the database
 		if (err) {
 			console.log(err);

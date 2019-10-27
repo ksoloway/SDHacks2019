@@ -19,8 +19,4 @@ $(document).ready(function() {
   $("#logout").click(function() {
     location.href = "/login";
   });
-
-  $("#about").click(function() {
-    location.href = "/about";
-  });
 });

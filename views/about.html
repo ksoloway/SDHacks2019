@@ -1,0 +1,80 @@
+<!doctype>
+<head>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="scripts/about.js"></script>
+  <link rel="stylesheet" href="../styles/about.css">
+</head>
+<body>
+
+<div class="header">
+  <div class="Header-Buttons">
+    <a href="/"><img src="EmoText1.png" class="logo" alt="Logo"></a>
+    <div class="Nav-Buttons" style=float:right>
+      <a href="#"><button class="Button-Dropdown">
+        <select>
+          <option value="English">English</option>
+          <option value="German">German</option>
+          <option value="French">French</option>
+          <option value="Spanish">Spanish</option>
+          <option value="Italian">Italian</option>
+          <option value="Portuguese">Portuguese</option>
+        </select>
+        </button>
+      </a>
+      <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">John Doe</button>
+          <div id="myDropdown" class="dropdown-content">
+            <a href="/about" id="about">About</a>
+            <a href="/login" id="logout">Logout</a>
+          </div>
+      </div>
+    <!--  <a href="#"><button class="Button-Design"><p>John Doe</p></button></a> -->
+    </div>
+  </div>
+</div>
+    <div class="container">
+      <h1>About</h1>
+        <h2>Q1: What is this site for?</h2>
+          <p>Insert text here</p>
+        <h2>Q2: What did we use?</h2>
+          <p>Insert text here</p>
+        <h2>Q3: Who created this?</h2>
+          <h3>Front-End: Michelle Wan & Sean Race</h3>
+          <h3>Back-End: Kevin Soloway & Tianxing Liu</h3>
+        <h2>Fun facts:</h2>
+        <ul><p>
+            <li>This was created at SD Hacks 2019</li>
+            <li>This was created in 36 hours</li>
+            <li>People mistook Kevin for a mentor</li>
+            <li>There was lots of chicken</li>
+        </p></ul>
+      </div>
+
+  <script>
+  // Get the modal
+  var modal = document.getElementById("myModal");
+
+  // Get the button that opens the modal
+  var btn = document.getElementById("myBtn");
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+
+  // When the user clicks the button, open the modal
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+  </script>
+  </body>

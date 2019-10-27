@@ -163,3 +163,88 @@ select {
 .dropdown a:hover {background-color: #ddd;}
 
 .show {display: block;}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+}
+
+#signin {
+  width: 90%;
+}
+
+#myBtn {
+  background-color: #1D7082;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+#login-button {
+  background-color: #1D7082;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  margin-top: 5%;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 5px solid #d7d7d7;
+  width: 25%;
+  text-align: center;
+}
+h2 {
+  font-size: 200%;
+  color: Black;
+}
+
+#signup-input {
+  border-width: thick;
+  border-color: #2892d7;
+  width: 17%;
+  padding: .5%;
+}
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.container {
+  text-align: center;
+  margin-top: 5%;
+}
+
+#signup-button {
+  background-color: #1D7082;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  margin-top: 2%;
+}

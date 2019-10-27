@@ -1,8 +1,8 @@
 <!doctype>
 <head>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script src="scripts/login.js"></script>
-  <link rel="stylesheet" href="../styles/login.css">
+	<script src="scripts/signup.js"></script>
+  <link rel="stylesheet" href="../styles/signup.css">
 </head>
 <body>
 
@@ -38,48 +38,27 @@
                 <p>Password</p>
                 <input type="text" name="password" value="password"> <br>
                 <a href="/" id="login"><button id="login-button" type="button" name="login">Login</button></a>
-                <p id="center-text">Not registered? <a href="/signup" >Sign up!</a></p>
             </div>
 
           </div>
       </div>
     </div>
   </div>
+    <div class="container">
+      <h2>First Name</h2>
+      <input id="signup-input" type="text" name="First Name" value="First Name">
+      <h2>Last Name</h2>
+      <input id="signup-input" type="text" name="Last Name" value="Last Name">
+      <h2>Phone Number</h2>
+      <input id="signup-input" type="text" name="Phone Number" value="Phone Number">
+      <h2>Email</h2>
+      <input id="signup-input" type="text" name="Email" value="Email">
+      <h2>Password</h2>
+      <input id="signup-input" type="text" name="Password" value="Password"><br>
+      <a href="/"><button id="signup-button" type="button" name="Sign Up">Sign Up</button></a>
+      </div>
 
-  <div class="Body-Text">
-    <div class="Text-Box">
-    <div class="Body-Buttons">
-      <a href="#"><button class="Button-Design"><p>Documents</p></button></a>
-      <a href="#"><button class="Button-Design"><p>Text</p></button></a>
-        <a href="#"><button class="Calculate-Button"><p>Calculate</p></button></a>
-        <a href="#"><button class="Clear-Button"><p>Clear</p></button></a>
-    </div>
-      	<textarea class="Form" name="Analysis-Input" cols="160" rows="14"></textarea>
-     </div>
-  </div>
-
-    <div>
-      <table class="Result-Box" border="0">
-        <thead>
-          <tr>
-            <th>&nbsp;<hr></th>
-            <th>Results</th>
-            <th>&nbsp;</th>
-          </tr>
-        </thead>
-          <tr>
-            <td>Positive: 98%</td>
-            <td>&nbsp;</td>
-            <td>Negative: 0%</td>
-          </tr>
-          <tr>
-            <td>Neutral: 2%</td>
-            <td>&nbsp;</td>
-            <td>Mixed: 0%</td>
-          </tr>
-      </table>
-    </div>
-    <script>
+  <script>
   // Get the modal
   var modal = document.getElementById("myModal");
 
