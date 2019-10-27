@@ -5,6 +5,7 @@ const config = require('dotenv').config();
 var path = require("path");
 var request = require('request');
 const Person = require('./models/person')
+const Login = require('./models/login')
 var AWS = require('aws-sdk')
 // Set up the Express app
 const app = express();
@@ -55,7 +56,7 @@ app.get('/indextest', function (req, res) {
 });
 
 app.get('/test', function (req, res) {
-	res.sendFile('/views/test.html', { root: __dirname });
+	res.sendFile('/views/login.html', { root: __dirname });
 });
 
 app.get('/testsean', function (req, res) {
@@ -115,6 +116,34 @@ app.get('/people/:id', function (req, res, next) {
 			throw err;
 		}
 	});
+});
+
+app.post('/signup/:usr/:pwd', function(req,res,next){
+	userparam = req.params.usr;
+	passwordparam = req.params.pwd;
+	var login = new Login();
+	login.username = userparam;
+	login.password = passwordparam;
+	login.save(function (err, login) { // Saves the Person object to the database
+		if (err) {
+			console.log(err);
+		} else {
+			res.send(login); // Returns the new object as JSON
+		}
+	})
+});
+
+app.get('/login/:usr/:pwd', function(req,res,next){
+	userparam = req.params.usr;
+	passwordparam = req.params.pwd;
+	Login.find({username:userparam,password:passwordparam}, 
+		function (err, docs) { // Saves the Person object to the database
+		if (err) {
+			console.log(err);
+		} else {
+			res.send(docs); // Returns the new object as JSON
+		}
+	})
 });
 
 // POST route that adds a new Person object
