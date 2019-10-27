@@ -1,12 +1,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const config = require('dotenv').config();
 var path = require("path");
 var request = require('request');
 const Person = require('./models/person')
 var AWS = require('aws-sdk')
 // Set up the Express app
 const app = express();
+
+//mongoose.createConnection(process.env.URI);
+mongoose.connect(process.env.URI, {dbName: 'SDHacks2019Db'});
+var db = mongoose.connection;
+db.on('error',console.error.bind(console,'MongoDB connection error:'));
+
 var credentials = new AWS.SharedIniFileCredentials({profile: 'default'});
 AWS.config.credentials = credentials;
 
@@ -16,20 +23,27 @@ AWS.config.getCredentials(function(err) {
   });
   AWS.config.update({region: 'us-east-1'});
   var comprehend = new AWS.Comprehend();
-  
-const MongodbMemoryServer = require('mongodb-memory-server');
 
-const mongoServer = new MongodbMemoryServer.MongoMemoryServer({
-	binary: { version: "latest" },
-	instance: { port: 65210, dbName: "test" }
-});
 
-mongoServer.getConnectionString().then((uri) => {
-	// Connect to MongoDB - should be running locally
-	mongoose.connect(uri);
-	mongoose.Promise = global.Promise;
-});
 
+// const MongodbMemoryServer = require('mongodb-memory-server');
+
+// const mongoServer = new MongodbMemoryServer.MongoMemoryServer({
+// 	binary: { version: "latest" },
+// 	instance: { port: 65210, dbName: "test" }
+// });
+
+
+//const MongoClient = require('mongodb').MongoClient;
+//console.log(process.env.URI);
+
+//const client = new MongoClient(uri, { useNewUrlParser: true });
+
+// client.connect(err => {
+//   const collection = client.db("test").collection("devices");
+//   // perform actions on the collection object
+//   client.close();
+// });
 
 
 // Set up static files
@@ -107,7 +121,6 @@ app.post('/people', function (req, res, next) {
 			var person = new Person();
 			person.name = req.body.name; // Stores the 'name' string
 			person.dog = JSON.parse(body).message; // Stores the 'dog' image URL
-			person.friends = []; // Initializes an empty array of friends
 			person.save(function (err, person) { // Saves the Person object to the database
 				if (err) {
 					console.log(err);
@@ -116,7 +129,7 @@ app.post('/people', function (req, res, next) {
 				}
 			})
 		}
-	});
+	})
 });
 
 // PUT route that adds a friend to a person
