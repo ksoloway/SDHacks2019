@@ -1,5 +1,26 @@
 <!doctype>
 <head>
+  <script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
   <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="scripts/index.js"></script>
   <link rel="stylesheet" href="../styles/index.css">
@@ -10,7 +31,7 @@
     <div class="Header-Buttons">
       <a href="#"><img src="EmoText1.png" class="logo" alt="Logo"></a>
       <div class="Nav-Buttons" style=float:right>
-        <a href="#"><button class="Button-Design">
+        <a href="#"><button class="Button-Dropdown">
           <select>
             <option value="English">English</option>
             <option value="German">German</option>
@@ -24,9 +45,9 @@
         <div class="dropdown">
           <button onclick="myFunction()" class="dropbtn">John Doe</button>
             <div id="myDropdown" class="dropdown-content">
-              <a href="#">Help</a>
-              <a href="#">Settings</a>
-              <a href="#">Log Out</a>
+              <a href="#home">Home</a>
+              <a href="#about">About</a>
+              <a href="#contact">Contact</a>
             </div>
         </div>
       <!--  <a href="#"><button class="Button-Design"><p>John Doe</p></button></a> -->
