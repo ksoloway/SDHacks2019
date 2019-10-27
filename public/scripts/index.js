@@ -33,5 +33,10 @@ $(document).ready(function() {
                 $("#neutral").html("Neutral: " + objectValue["SentimentScore"]["Neutral"]);
 			}
 		});
+    });
+    
+    $("#clear-button").click(function() {
+        $("#analysis-text").val('');
+		
 	});
 });
