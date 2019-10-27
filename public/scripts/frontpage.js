@@ -1,7 +1,5 @@
 
 $(document).ready(function() {
-
-   
   
     $("#signup").click(function() {
       location.href = "/signup";
