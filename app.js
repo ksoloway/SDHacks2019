@@ -9,7 +9,8 @@ const Login = require('./models/login')
 var AWS = require('aws-sdk')
 // Set up the Express app
 const app = express();
-
+var bcrypt = require('bcrypt');
+var loginUsername = "";
 mongoose.connect(process.env.URI, {dbName: 'SDHacks2019Db'});
 
 var credentials = new AWS.EnvironmentCredentials('AWS');
@@ -119,31 +120,64 @@ app.get('/people/:id', function (req, res, next) {
 });
 
 app.post('/signup/:usr/:pwd', function(req,res,next){
-	userparam = req.params.usr;
-	passwordparam = req.params.pwd;
-	var login = new Login();
-	login.username = userparam;
-	login.password = passwordparam;
-	login.save(function (err, login) { // Saves the Person object to the database
-		if (err) {
-			console.log(err);
-		} else {
-			res.send(login); // Returns the new object as JSON
-		}
-	})
+	bcrypt.hash(req.params.pwd, 1, function(err, hash) {
+		userparam = req.params.usr;
+		//passwordparam = req.params.pwd;
+		var login = new Login();
+		login.username = userparam;
+		login.password = hash;
+		Login.find({username:userparam},function(err,docs){
+			if(err || docs==undefined || docs.length == 0){
+				//login.password = bcrypt.hashSync(passwordparam);
+				login.save(function (err, login) { // Saves the Person object to the database
+					if (err) {
+						console.log(err);
+					} else {
+						loginUsername = login.username;
+						res.send(loginUsername); // Returns the new object as JSON
+					}
+				})
+			} else{
+				res.send("already exist");
+			}
+		});
+		
+	});
 });
 
 app.get('/login/:usr/:pwd', function(req,res,next){
 	userparam = req.params.usr;
 	passwordparam = req.params.pwd;
-	Login.find({username:userparam,password:passwordparam}, 
-		function (err, docs) { // Saves the Person object to the database
-		if (err) {
-			console.log(err);
-		} else {
-			res.send(docs); // Returns the new object as JSON
+	Login.find({username:userparam},function(err,docs){
+		if(err || docs==undefined || docs.length==0){
+			res.send("doesn't exist");
+		}else{
+			bcrypt.compare(passwordparam, docs[0].password, function(err, Hres) {
+				if(Hres) {
+					loginUsername = userparam;
+					res.send(loginUsername);
+				} else {
+					res.send("wrong password");
+				} 
+			  });
 		}
+		
 	})
+	
+	// bcrypt.hash(req.params.pwd, 10, function(err, hash) {
+	// 	userparam = req.params.usr;
+	// 	req.params.pwd = hash;
+	// 	console.log(hash);
+	// 	Login.find({username:userparam,password:hash}, 
+	// 		function (err, docs) { // Saves the Person object to the database
+	// 		if (err) {
+	// 			console.log(err);
+	// 		} else {
+	// 			res.send(docs); // Returns the new object as JSON
+	// 		}
+	// 	})
+	//   });
+	
 });
 
 // POST route that adds a new Person object
