@@ -1,6 +1,11 @@
 
 $(document).ready(function() {
-  
+
+    $("#document-button").click(function() {
+      $("#url-input").toggle();
+      $("#parse-button").toggle();
+    });
+
     $("#signup").click(function() {
       location.href = "/signup";
   });
