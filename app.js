@@ -48,7 +48,11 @@ app.listen(port, function () {
 });
 
 // Serves the index.html file (our basic frontend)
+
 app.get('/', function (req, res) {
+	res.sendFile('/views/frontpage.html', { root: __dirname });
+});
+app.get('/loggedin', function (req, res) {
 	res.sendFile('/views/index.html', { root: __dirname });
 });
 
@@ -58,6 +62,10 @@ app.get('/indextest', function (req, res) {
 
 app.get('/test', function (req, res) {
 	res.sendFile('/views/login.html', { root: __dirname });
+});
+
+app.get('/about', function (req, res) {
+	res.sendFile('/views/about.html', { root: __dirname });
 });
 
 app.get('/testsean', function (req, res) {
