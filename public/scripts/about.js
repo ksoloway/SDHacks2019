@@ -4,7 +4,6 @@ $(document).ready(function() {
     var string = JSON.stringify(data);
     var obj = JSON.parse(string);
     console.log(obj);
-    $('#updateUser').html(obj);
   })
 });
 

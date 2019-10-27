@@ -17,10 +17,23 @@ window.onclick = function(event) {
 
 $(document).ready(function() {
 
+  $.get("/hist", function(data) {      
+    console.log(data);
+    var i;
+    for (i = 0; i < 3; i++) {
+      if (data[i][0].length > 50){
+        data[i][0] = data[i][0].substring(0,50) + "...";
+      }
+    }
+  
+    $("#row-one").html("<div  name='button'>"+data[0][0]+" , "+data[0][1]+"</div>");
+    $("#row-two").html("<div  name='button'>"+data[1][0]+" , "+data[1][1]+"</div>");
+    $("#row-three").html("<div  name='button'>"+data[2][0]+" , "+data[2][1]+"</div>");
+  });
+
   $.get('/getUser',function(data){
     var string = JSON.stringify(data);
     var obj = JSON.parse(string);
-    console.log(obj);
     $('#updateUser').html(obj);
   })
 
@@ -44,16 +57,21 @@ $(document).ready(function() {
                 $("#neutral").html("Neutral: " + objectValue["SentimentScore"]["Neutral"]);
                 $.post("/hist/"+text+"/"+objectValue["Sentiment"],function(result){
                     if(result=="not logged in"){
-                      console.log(result);
                       //$("#history-box tr").hide();
                     } else if (result =="cannot be found"){
-                      console.log(result);
                     } else{
                       $.get("/hist", function(data) {
-                        //$("#history-box tr").show();
-                        //$("#history-box").show();
-                        //$("#history-box").remove();
-                        //$("#history-box").append("<tr><th>History</th></tr>");
+                        
+                        var i;
+                        for (i = 0; i < 3; i++) {
+                          if (data[i][0].length > 50){
+                            data[i][0] = data[i][0].substring(0,50) + "...";
+                          }
+                        }
+              
+                        $("#row-one").html("<div  name='button'>"+data[0][0]+" , "+data[0][1]+"</div>");
+                        $("#row-two").html("<div  name='button'>"+data[1][0]+" , "+data[1][1]+"</div>");
+                        $("#row-three").html("<div  name='button'>"+data[2][0]+" , "+data[2][1]+"</div>");
                       });
                     }
                 })

@@ -102,7 +102,6 @@ function languageCode(language) {
 	}
 }
 
-
 app.get('/amzapi/:text/:language', function(req,res,next){
 	textParam = req.params.text;
 	languageParam = languageCode(req.params.language);
@@ -136,7 +135,13 @@ app.post('/hist/:newhistory/:sent',function(req, res, next){
 				res.send("cannot be found");
 			} else{
 				prevHist= docs[0].history;
-				prevHist.push([req.params.newhistory,req.params.sent]);
+				if (prevHist.length >= 3){
+					prevHist[2] = prevHist[1];
+					prevHist[1] = prevHist[0];
+					prevHist[0] = [req.params.newhistory,req.params.sent];
+				} else{
+					prevHist.unshift([req.params.newhistory,req.params.sent]);
+				}
 				Login.findOneAndUpdate({username:loginUsername},
 					{$set:{history:prevHist}},
 					function(err, docs){
