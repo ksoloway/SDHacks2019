@@ -9,12 +9,11 @@ var AWS = require('aws-sdk')
 // Set up the Express app
 const app = express();
 
-//mongoose.createConnection(process.env.URI);
 mongoose.connect(process.env.URI, {dbName: 'SDHacks2019Db'});
-var db = mongoose.connection;
-db.on('error',console.error.bind(console,'MongoDB connection error:'));
 
-var credentials = new AWS.SharedIniFileCredentials({profile: 'default'});
+var credentials = new AWS.EnvironmentCredentials('AWS');
+console.log(credentials);
+//var credentials = new AWS.SharedIniFileCredentials({profile: 'default'});
 AWS.config.credentials = credentials;
 
 AWS.config.getCredentials(function(err) {
@@ -23,7 +22,6 @@ AWS.config.getCredentials(function(err) {
   });
   AWS.config.update({region: 'us-east-1'});
   var comprehend = new AWS.Comprehend();
-
 
 
 // const MongodbMemoryServer = require('mongodb-memory-server');
@@ -90,6 +88,7 @@ app.get('/people', function (req, res, next) {
 		}
 	});
 });
+
 app.get('/amzapi/:text', function(req,res,next){
 	textParam = req.params.text;
 	languageParam = "en";
