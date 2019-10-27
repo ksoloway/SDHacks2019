@@ -11,7 +11,7 @@
       <a href="#"><img src="EmoText1.png" class="logo" alt="Logo"></a>
       <div class="Nav-Buttons" style=float:right>
         <a href="#"><button class="Button-Dropdown">
-          <select>
+          <select id="language-dropdown">
             <option value="English">English</option>
             <option value="German">German</option>
             <option value="French">French</option>
@@ -39,10 +39,10 @@
     <div class="Body-Buttons">
       <a href="#"><button class="Button-Design"><p>Documents</p></button></a>
       <a href="#"><button class="Button-Design"><p>Text</p></button></a>
-        <a href="#"><button class="Calculate-Button"><p>Calculate</p></button></a>
+        <a href="#"><button id = "calculate-button" class="Calculate-Button"><p>Calculate</p></button></a>
         <a href="#"><button class="Clear-Button"><p>Clear</p></button></a>
     </div>
-      	<textarea class="Form" name="Analysis-Input" cols="100" rows="14"></textarea>
+      	<textarea class="Form" name="Analysis-Input" cols="100" rows="14" id="analysis-text"></textarea>
      </div>
   </div>
 
@@ -73,14 +73,14 @@
           </tr>
         </thead>
           <tr>
-            <td>Positive: 98%</td>
+            <td id="positive"></td>
             <td>&nbsp;</td>
-            <td>Negative: 0%</td>
+            <td id="negative"></td>
           </tr>
           <tr>
-            <td>Neutural: 2%</td>
+            <td id="neutral"></td>
             <td>&nbsp;</td>
-            <td>Mixed: 0%</td>
+            <td id="mixed"></td>
           </tr>
       </table>
     </div>

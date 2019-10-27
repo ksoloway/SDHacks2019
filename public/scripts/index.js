@@ -15,5 +15,22 @@ function myFunction() {
     }
   }
 $(document).ready(function() {
-
+    $("#calculate-button").click(function() {
+        var text = $("#analysis-text").val();
+        var language = $("#language-dropdown").val();
+		$.ajax({
+			type: "GET",
+			url: "/amzapi/"+text+"/"+language,
+			data: {},
+			success: function(data) {
+                console.log(data);
+				var string = JSON.stringify(data);
+                var objectValue = JSON.parse(string);
+                $("#positive").html("Positive: " + objectValue["SentimentScore"]["Positive"]);
+                $("#negative").html("Negative: " + objectValue["SentimentScore"]["Negative"]);
+                $("#mixed").html("Mixed: " + objectValue["SentimentScore"]["Mixed"]);
+                $("#neutral").html("Neutral: " + objectValue["SentimentScore"]["Neutral"]);
+			}
+		});
+	});
 });
