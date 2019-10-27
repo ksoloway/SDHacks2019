@@ -23,7 +23,6 @@ $(document).ready(function() {
 			url: "/amzapi/"+text+"/"+language,
 			data: {},
 			success: function(data) {
-                console.log(data);
 				var string = JSON.stringify(data);
                 var objectValue = JSON.parse(string);
                 $("#results-box").html("Result: " + objectValue["Sentiment"]);
@@ -31,6 +30,21 @@ $(document).ready(function() {
                 $("#negative").html("Negative: " + objectValue["SentimentScore"]["Negative"]);
                 $("#mixed").html("Mixed: " + objectValue["SentimentScore"]["Mixed"]);
                 $("#neutral").html("Neutral: " + objectValue["SentimentScore"]["Neutral"]);
+                $.post("/hist/"+text+"/"+objectValue["Sentiment"],function(result){
+                    if(result=="not logged in"){
+                      console.log(result);
+                      //$("#history-box tr").hide();
+                    } else if (result =="cannot be found"){
+                      console.log(result);
+                    } else{
+                      $.get("/hist", function(data) {
+                        //$("#history-box tr").show();
+                        //$("#history-box").show();
+                        //$("#history-box").remove();
+                        //$("#history-box").append("<tr><th>History</th></tr>");
+                      });
+                    }
+                })
 			}
 		});
     });

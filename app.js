@@ -119,6 +119,41 @@ app.get('/people/:id', function (req, res, next) {
 	});
 });
 
+app.post('/hist/:newhistory/:sent',function(req, res, next){
+	var prevHist;
+	if(loginUsername==""){
+		res.send("not logged in");
+	} else{
+		Login.find({username:loginUsername},function(err,docs){
+			if(err || docs == undefined || docs.length == 0){
+				res.send("cannot be found");
+			} else{
+				prevHist= docs[0].history;
+				prevHist.push([req.params.newhistory,req.params.sent]);
+				Login.findOneAndUpdate({username:loginUsername},
+					{$set:{history:prevHist}},
+					function(err, docs){
+						if(err){
+							console.log("unsuccessful");
+						}
+				});
+				res.send("succeeded");
+			}
+		});	
+	}
+});
+
+app.get('/hist',function(req, res, next){
+	Login.find({username:loginUsername},function(err,docs){
+		if(err || docs == undefined || docs.length == 0){
+			console.log("user can't be found");
+		} else{
+			prevHist= docs[0].history;
+			res.send(prevHist);
+		}
+	});	
+});
+
 app.post('/signup/:usr/:pwd', function(req,res,next){
 	bcrypt.hash(req.params.pwd, 1, function(err, hash) {
 		userparam = req.params.usr;
@@ -126,6 +161,7 @@ app.post('/signup/:usr/:pwd', function(req,res,next){
 		var login = new Login();
 		login.username = userparam;
 		login.password = hash;
+		login.history = [];
 		Login.find({username:userparam},function(err,docs){
 			if(err || docs==undefined || docs.length == 0){
 				//login.password = bcrypt.hashSync(passwordparam);
@@ -163,20 +199,6 @@ app.get('/login/:usr/:pwd', function(req,res,next){
 		}
 		
 	})
-	
-	// bcrypt.hash(req.params.pwd, 10, function(err, hash) {
-	// 	userparam = req.params.usr;
-	// 	req.params.pwd = hash;
-	// 	console.log(hash);
-	// 	Login.find({username:userparam,password:hash}, 
-	// 		function (err, docs) { // Saves the Person object to the database
-	// 		if (err) {
-	// 			console.log(err);
-	// 		} else {
-	// 			res.send(docs); // Returns the new object as JSON
-	// 		}
-	// 	})
-	//   });
 	
 });
 
