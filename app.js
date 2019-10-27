@@ -12,7 +12,6 @@ var AWS = require('aws-sdk');
 const app = express();
 var bcrypt = require('bcrypt');
 var loginUsername = "";
-var textTest = "test";
 mongoose.connect(process.env.URI, {dbName: 'SDHacks2019Db'});
 
 var credentials = new AWS.EnvironmentCredentials('AWS');
@@ -25,9 +24,6 @@ AWS.config.getCredentials(function(err) {
   AWS.config.update({region: 'us-east-1'});
   var comprehend = new AWS.Comprehend();
 
-textract.fromFileWithPath("ad.jpg",function(err,text){
-	textTest = text;
-});
 // Set up static files
 app.use(express.static('public'));
 app.use('/styles', express.static(path.join(__dirname, 'public/styles')));
@@ -58,20 +54,12 @@ app.get('/loggedin', function (req, res) {
 	res.sendFile('/views/index.html', { root: __dirname });
 });
 
-app.get('/indextest', function (req, res) {
-	res.sendFile('/views/indextest.html', { root: __dirname });
-});
-
 app.get('/about', function (req, res) {
 	res.sendFile('/views/about.html', { root: __dirname });
 });
 
 app.get('/signup', function (req, res) {
 	res.sendFile('/views/signup.html', { root: __dirname });
-});
-
-app.get('/testsean', function (req, res) {
-	res.sendFile('/views/testsean.html', { root: __dirname });
 });
 
 function languageCode(language) {
@@ -107,13 +95,6 @@ app.get('/amzapi/:text/:language', function(req,res,next){
 			res.send(data); // Sends the result as JSON
 		}           // successful response
 	  });
-});
-
-app.get('/testText', function(req,res,next){
-
-			console.log(textTest);
-			res.send(textTest); // Sends the result as JSON
-		           // successful response
 });
 
 app.post('/hist/:newhistory/:sent',function(req, res, next){
