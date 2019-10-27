@@ -26,6 +26,7 @@ $(document).ready(function() {
                 console.log(data);
 				var string = JSON.stringify(data);
                 var objectValue = JSON.parse(string);
+                $("#results-box").html("Result: " + objectValue["Sentiment"]);
                 $("#positive").html("Positive: " + objectValue["SentimentScore"]["Positive"]);
                 $("#negative").html("Negative: " + objectValue["SentimentScore"]["Negative"]);
                 $("#mixed").html("Mixed: " + objectValue["SentimentScore"]["Mixed"]);
