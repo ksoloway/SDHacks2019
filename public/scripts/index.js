@@ -18,7 +18,6 @@ window.onclick = function(event) {
 $(document).ready(function() {
 
   $.get("/hist", function(data) {      
-    console.log(data);
     var i;
     for (i = 0; i < 3; i++) {
       if (data[i][0].length > 50){
