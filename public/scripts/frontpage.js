@@ -6,6 +6,22 @@ $(document).ready(function() {
       $("#parse-button").toggle();
     });
 
+    $("#parse-button").click(function(){
+      var text = $('#url-input').val();
+      const exampleImage = text;
+        const worker = new Tesseract.TesseractWorker();
+        worker.recognize(exampleImage)
+            .progress(progress => $("#analysis-text").val("loading"))
+            .then(result => {
+              console.log('result', result);
+              $("#analysis-text").val(result.text);
+            })
+            .finally(() => worker.terminate()
+            ).catch(e => {
+              console.log(e);
+            });
+    });
+
     $("#signup").click(function() {
       location.href = "/signup";
   });

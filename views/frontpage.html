@@ -1,14 +1,6 @@
 <!doctype>
 <head>
     <script src="https://unpkg.com/tesseract.js@v2.0.0-alpha.13/dist/tesseract.min.js"></script>
-    <script>
-        const exampleImage = 'https://tesseract.projectnaptha.com/img/eng_bw.png';
-        const worker = new Tesseract.TesseractWorker();
-        worker.recognize(exampleImage)
-            .progress(progress => console.log('progress', progress))
-            .then(result => console.log('result', result))
-            .finally(() => worker.terminate());
-    </script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="scripts/frontpage.js"></script>
   <script src="scripts/login.js"></script>
