@@ -26,6 +26,23 @@ $(document).ready(function() {
 		});
     });
 
+    $("#logout-button").click(function() {
+        $.ajax({
+			type: "PUT",
+			url: "/logout",
+			data: {},
+			success: function(username) {
+                if(username=="not logged in"){
+                    console.log(username);
+                } else{
+                    console.log(username);
+                }
+			}
+		});
+        // clear history here
+        
+    });
+
     $("#add-signup-button").click(function() {
         if($("#add-signup").val()!=''){
             var usr = $("#add-signup").val();
@@ -51,6 +68,4 @@ $(document).ready(function() {
 			}
 		});
     });
-    
-    
 });

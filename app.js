@@ -199,6 +199,15 @@ app.post('/people', function (req, res, next) {
 	})
 });
 
+app.put('/logout',function(req, res, next){
+	if(loginUsername == ""){
+		res.send("not logged in");
+	} else{
+		loginUsername = "";
+		res.send("");
+	}
+});
+
 // PUT route that adds a friend to a person
 app.put('/people/:id', function (req, res, next) {
 	Person.findById(req.params.id, function (err, person) { // Finds a Person by id (param in URL)
@@ -232,3 +241,5 @@ app.delete('/people/:id', function (req, res, next) {
 		}
 	});
 });
+
+exports.loginUsername = loginUsername;
