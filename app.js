@@ -68,6 +68,10 @@ app.get('/about', function (req, res) {
 	res.sendFile('/views/about.html', { root: __dirname });
 });
 
+app.get('/signup', function (req, res) {
+	res.sendFile('/views/signup.html', { root: __dirname });
+});
+
 app.get('/testsean', function (req, res) {
 	res.sendFile('/views/testsean.html', { root: __dirname });
 });
