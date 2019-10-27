@@ -81,8 +81,8 @@ hr {
 
 .Clear-Button {
   float: right;
-  background-color: #1D7082;
-  border-color: #1D7082;
+  background-color: #3F3A7D;
+  border-color: #3F3A7D;
   color: #ffffff;
   margin-right: 1%;
   border-radius: 4%;
@@ -90,10 +90,11 @@ hr {
 
 .Calculate-Button {
   float: right;
-  background-color: #1D7082;
-  border-color: #1D7082;
+  background-color: #C3771D;
+  border-color: #C3771D;
   color: #ffffff;
   border-radius: 4%;
+  width: 20%;
 }
 
 .Button-Design {
