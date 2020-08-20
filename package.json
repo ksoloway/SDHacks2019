@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.556.0",
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
     "dotenv": "^8.2.0",
