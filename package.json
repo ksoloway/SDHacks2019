@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.556.0",
+    "aws-sdk": "^2.814.0",
     "bcrypt": "^3.0.6",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
